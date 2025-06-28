@@ -1,147 +1,551 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chimney Doctor</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME | Chimney Doctor</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-```
-/* Reset & Base */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Open Sans', sans-serif; line-height: 1.6; color: #333; }
-img { max-width: 100%; display: block; }
-a { text-decoration: none; color: inherit; }
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            background-color: #000;
+        }
 
-/* Header */
-header { position: fixed; top: 0; width: 100%; background: #fff; display: flex; justify-content: space-between; align-items: center; padding: 15px 40px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000; }
-.logo img { height: 50px; }
-nav { display: flex; gap: 35px; }
-nav a { position: relative; font-weight: 600; font-size: 16px; transition: color 0.3s; }
-nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: #f47c1c; transition: width 0.3s; }
-nav a:hover { color: #f47c1c; }
-nav a:hover::after { width: 100%; }
-.spacer { height: 80px; }
+        /* Wix Header Bar */
+        .wix-header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px 0;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            border-bottom: 1px solid #eee;
+        }
 
-/* Hero */
-.hero { display: flex; align-items: center; justify-content: center; background: url('https://via.placeholder.com/1200x400') center/cover no-repeat; height: 400px; color: #fff; text-align: center; }
-.hero h1 { font-size: 48px; margin-bottom: 10px; }
-.hero p { font-size: 20px; }
+        .wix-header a {
+            color: #3899ec;
+            text-decoration: none;
+            margin-left: 20px;
+            padding: 6px 16px;
+            border: 1px solid #3899ec;
+            border-radius: 20px;
+            font-size: 11px;
+        }
 
-/* Sections */
-section { padding: 60px 20px; }
-.container { max-width: 1100px; margin: 0 auto; }
+        /* Header */
+        header {
+            background: #000;
+            padding: 20px 0;
+            position: relative;
+        }
 
-/* About */
-#about .content { display: flex; gap: 40px; align-items: center; flex-wrap: wrap; }
-#about img { flex: 1 1 300px; border-radius: 8px; }
-#about .text { flex: 2 1 400px; }
-#about .text h2 { font-size: 32px; margin-bottom: 15px; }
-#about .text p { font-size: 18px; }
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
 
-/* Services */
-#services .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-#services .card { background: #f9f9f9; padding: 20px; border-radius: 8px; box-shadow: 0 1px 5px rgba(0,0,0,0.1); text-align: center; }
-#services .card h3 { margin-bottom: 10px; font-size: 24px; }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
 
-/* Contact */
-#contact form { display: grid; gap: 15px; max-width: 600px; margin: 0 auto; }
-#contact input, #contact textarea { padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; }
-#contact button { background: #f47c1c; color: #fff; padding: 12px; border: none; border-radius: 4px; font-size: 18px; cursor: pointer; transition: background 0.3s; }
-#contact button:hover { background: #d46b12; }
+        .logo-circle {
+            width: 60px;
+            height: 60px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 3px solid #e74c3c;
+        }
 
-/* Footer */
-footer { background: #333; color: #fff; text-align: center; padding: 20px; }
+        .logo-placeholder {
+            font-size: 24px;
+            color: #3498db;
+        }
 
-/* Responsive */
-@media (max-width: 768px) {
-  header { padding: 10px 20px; }
-  .hero h1 { font-size: 36px; }
-  .hero p { font-size: 18px; }
-}
-```
+        .company-name {
+            font-size: 42px;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 2px;
+        }
 
-  </style>
+        .nav-buttons {
+            position: absolute;
+            right: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            padding: 8px 20px;
+            border: 2px solid #3899ec;
+            border-radius: 25px;
+            background: transparent;
+            color: #3899ec;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #3899ec;
+            color: white;
+        }
+
+        .nav-btn.active {
+            background: #3899ec;
+            color: white;
+        }
+
+        .fullscreen-tip {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ccc;
+            font-size: 11px;
+            margin-top: -10px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #4285f4, #1a73e8);
+            padding: 60px 0 80px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-title {
+            font-size: 56px;
+            font-weight: normal;
+            font-style: italic;
+            margin-bottom: 40px;
+            text-decoration: underline;
+            line-height: 1.2;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            justify-content: center;
+        }
+
+        .hero-logo {
+            width: 200px;
+            height: 200px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 8px solid #e74c3c;
+            flex-shrink: 0;
+        }
+
+        .hero-logo-placeholder {
+            font-size: 60px;
+            color: #3498db;
+        }
+
+        .hero-text {
+            max-width: 500px;
+            text-align: left;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* Services Section */
+        .services {
+            background: #000;
+            padding: 60px 0;
+        }
+
+        .services-title {
+            text-align: center;
+            font-size: 42px;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .service-box {
+            background: #2c5aa0;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .service-box h3 {
+            color: #e74c3c;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-decoration: underline;
+        }
+
+        .service-box p {
+            color: #fff;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .service-benefit {
+            color: #fff;
+            font-size: 14px;
+            font-style: italic;
+        }
+
+        /* Guarantees Section */
+        .guarantees {
+            background: #000;
+            padding: 40px 0;
+        }
+
+        .guarantee-text {
+            text-align: center;
+            color: #fff;
+            font-size: 16px;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .guarantee-boxes {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .guarantee-box {
+            background: #2c5aa0;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .guarantee-box h3 {
+            color: #e74c3c;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-decoration: underline;
+        }
+
+        .guarantee-box p {
+            color: #fff;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .guarantee-benefit {
+            color: #fff;
+            font-size: 14px;
+            font-style: italic;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: linear-gradient(135deg, #4285f4, #1a73e8);
+            padding: 60px 0 80px;
+            color: white;
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            justify-content: center;
+        }
+
+        .google-reviews {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .google-logo {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .google-logo .g1 { color: #4285f4; }
+        .google-logo .o1 { color: #ea4335; }
+        .google-logo .o2 { color: #fbbc05; }
+        .google-logo .g2 { color: #4285f4; }
+        .google-logo .l { color: #34a853; }
+        .google-logo .e { color: #ea4335; }
+
+        .reviews-text {
+            color: #666;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .stars {
+            color: #fbbc05;
+            font-size: 20px;
+            margin-top: 5px;
+        }
+
+        .testimonials-text {
+            max-width: 600px;
+        }
+
+        .testimonial {
+            font-style: italic;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            font-style: normal;
+            margin-bottom: 30px;
+            text-align: right;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .cta-text {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .book-button {
+            background: white;
+            color: #1a73e8;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .book-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .book-text {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .book-main {
+            display: block;
+            font-size: 28px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content,
+            .testimonials-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .hero-text {
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .company-name {
+                font-size: 28px;
+            }
+
+            .nav-buttons {
+                position: static;
+                justify-content: center;
+                margin-top: 20px;
+            }
+
+            .header-content {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <img src="https://via.placeholder.com/150x50?text=Logo" alt="Chimney Doctor Logo" />
+    <!-- Wix Header -->
+    <div class="wix-header">
+        <span>🔧 WIX | This website was built on Wix. Create yours today.</span>
+        <a href="#">Get Started</a>
     </div>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#services">Services & Prices</a>
-      <a href="#about">Who We Are</a>
-      <a href="#book">Book a Clean</a>
-    </nav>
-  </header>
 
-  <div class="spacer"></div>
-
-  <!-- Hero Section -->
-
-  <section id="home" class="hero">
-    <div class="container">
-      <h1>CHIMNEY DOCTOR</h1>
-      <h2>Log burner Chimney Cleaning Specialists</h2>
-      <p>For over 20 years, we’ve been dedicated to keeping your log burners safe, efficient and spick-&-span.</p>
-    </div>
-  </section>
-
-  <!-- About Section -->
-
-  <section id="about">
-    <div class="container content">
-      <img src="https://via.placeholder.com/400x300" alt="About us">
-      <div class="text">
-        <h2>About Us</h2>
-        <p>We specialize in thorough chimney cleaning and maintenance to ensure your home stays warm and safe. Our professional team removes creosote, soot, and blockages so you can enjoy peace of mind each season.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-
-  <section id="services">
-    <div class="container">
-      <h2 style="text-align:center; margin-bottom:40px;">Our Services</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>Chimney Cleaning</h3>
-          <p>Complete removal of soot and creosote from flue and chimney liner.</p>
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <div class="logo-circle">
+                    <div class="logo-placeholder">👨‍🔧</div>
+                </div>
+                <div class="company-name">CHIMNEY DOCTOR</div>
+            </div>
+            
+            <div class="nav-buttons">
+                <a href="#" class="nav-btn active">HOME</a>
+                <a href="#" class="nav-btn">SERVICES AND PRICES</a>
+                <a href="#" class="nav-btn">WHO WE ARE</a>
+                <a href="#" class="nav-btn">BOOK A CLEAN</a>
+            </div>
+            
+            <div class="fullscreen-tip">To exit full screen, press and hold Esc</div>
         </div>
-        <div class="card">
-          <h3>Inspection</h3>
-          <p>Comprehensive safety inspection to identify potential hazards.</p>
-        </div>
-        <div class="card">
-          <h3>Repairs</h3>
-          <p>Repair damaged bricks, mortar, or flue liners to restore function.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- Contact Section -->
+    <main>
+        <section class="hero">
+            <h1 class="hero-title">Log burner Chimney<br>Cleaning Specialists</h1>
+            
+            <div class="hero-content">
+                <div class="hero-logo">
+                    <div class="hero-logo-placeholder">🧹</div>
+                </div>
+                
+                <div class="hero-text">
+                    <p>For over 20 years, we've been dedicated to keeping your our customers log burners safe, efficient and spick-&-span.</p>
+                    <p>Imagine cozy evenings by a roaring fire—without the worry of dangerous creosote build-up or chimney blockages.</p>
+                </div>
+            </div>
+        </section>
 
-  <section id="contact">
-    <div class="container">
-      <h2 style="text-align:center; margin-bottom:20px;">Contact Us</h2>
-      <form>
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" rows="5" placeholder="Your Message"></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-    </div>
-  </section>
+        <section class="services">
+            <h2 class="services-title">Every Clean Includes</h2>
+            
+            <div class="services-container">
+                <div class="service-box">
+                    <h3>Fireplace Inspection</h3>
+                    <p>We examine your fireplace and flue, checking for cracks, blockages, and wear of your log burner, inside and out.</p>
+                    <div class="service-benefit">— so you can be confident your hearth is safe, sound and ready for use.</div>
+                </div>
 
-  <!-- Footer -->
+                <div class="service-box">
+                    <h3>Thorough Soot And Creosote Removal</h3>
+                    <p>We thoroughly clear out residue to prevent chimney fires, through the chimney flue and inside the log burner itself.</p>
+                    <div class="service-benefit">— so you can enjoy a safe, warm fire all season long.</div>
+                </div>
 
-  <footer>
-    <p>&copy; 2025 Chimney Doctor. All rights reserved.</p>
-  </footer>
+                <div class="service-box">
+                    <h3>Advice On What To Do Next</h3>
+                    <p>After your inspection, we'll walk you through our findings and recommend any repairs or maintenance you might need.</p>
+                    <div class="service-benefit">— so you know exactly what's required to keep your chimney safe, efficient, and worry-free.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="guarantees">
+            <div class="guarantee-text">
+                — so you know exactly what's required to keep your chimney safe, efficient, and worry-free.
+            </div>
+            
+            <div class="guarantee-boxes">
+                <div class="guarantee-box">
+                    <h3>No-Mess Guaranteed</h3>
+                    <p>We leave your hearth (fireplace area) exactly as we found it—minus the soot.</p>
+                    <div class="guarantee-benefit">— so you don't have to lift a finger or clean up after us.</div>
+                </div>
+
+                <div class="guarantee-box">
+                    <h3>Home Respect Guaranteed</h3>
+                    <p>Our technicians treat your home with respect, carefully working around your furniture and belongings, not leaving a mess behind.</p>
+                    <div class="guarantee-benefit">— so you can unwind knowing we've left your space clean and respected.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <div class="testimonials-container">
+                <div class="google-reviews">
+                    <div class="google-logo">
+                        <span class="g1">G</span><span class="o1">o</span><span class="o2">o</span><span class="g2">g</span><span class="l">l</span><span class="e">e</span>
+                    </div>
+                    <div class="reviews-text">Reviews</div>
+                    <div class="stars">★★★★★</div>
+                </div>
+                
+                <div class="testimonials-text">
+                    <div class="testimonial">
+                        "Amazing service from the Chimney Doctor's team, very respectful and friendly, the fire place was spotless after the sweep. Highly recommended :)"
+                    </div>
+                    <div class="testimonial-author">— Lise Gutleben</div>
+                    
+                    <div class="testimonial">
+                        "Prompt and helpful. Excellent job, our new carpet remained pristine. Carried out minor repairs as well and gave good advice. Highly recommended."
+                    </div>
+                    <div class="testimonial-author">— Matt Doogue</div>
+                </div>
+            </div>
+            
+            <div class="cta-section">
+                <div class="cta-text">
+                    Warm up your winter, not your worries. Book your chimney sweep today and enjoy a safer, cleaner fireplace tomorrow.
+                </div>
+                
+                <a href="#" class="book-button">
+                    <span class="book-text">CLICK HERE TO</span>
+                    <span class="book-main">BOOK A CLEAN</span>
+                </a>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
